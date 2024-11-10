@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="additionApp">
+
+<head>
+    <title>Addition App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animation to fade in the result */
+        
+        .fade-in {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body ng-controller="AdditionController" ng-init="num1=0; num2=0; result=0; showResult=false" class="flex flex-col items-center min-h-screen bg-gray-100 p-6">
+
+    <h2 class="text-2xl font-bold mb-6 text-blue-600">Simple Addition with AngularJS</h2>
+
+    <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2">Number 1:</label>
+            <input type="number" ng-model="num1" placeholder="Enter first number" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2">Number 2:</label>
+            <input type="number" ng-model="num2" placeholder="Enter second number" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <button ng-click="addNumbers()" ng-disabled="!num1 && !num2" class="w-full py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
+      Add Numbers
+    </button>
+
+        <!-- The result container with fade-in animation applied via ng-class when showResult is true -->
+        <div ng-show="showResult" ng-class="{'opacity-100': showResult, 'opacity-0': !showResult}" class="fade-in text-green-600 font-semibold mt-6 text-center text-lg opacity-0">
+            Result: <span ng-bind="result"></span>
+        </div>
+    </div>
+
+    <script>
+        // Define the AngularJS module and controller
+        var app = angular.module("additionApp", []);
+
+        app.controller("AdditionController", function($scope) {
+            $scope.addNumbers = function() {
+                // Calculate the sum and display the result
+                $scope.result = parseFloat($scope.num1) + parseFloat($scope.num2);
+                $scope.showResult = true; // Enable result display
+            };
+        });
+    </script>
+
+</body>
+
+</html>

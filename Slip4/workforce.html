@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="companyApp">
+
+<head>
+    <title>Company Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="CompanyController">
+
+    <h2>Company List</h2>
+
+    <!-- Display company details in a table using ng-repeat -->
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Workforce</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="company in companies">
+                <td>{{ company.name }}</td>
+                <td>{{ company.workforce }}</td>
+                <td>{{ company.location }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Define AngularJS module and controller
+        var app = angular.module('companyApp', []);
+
+        app.controller('CompanyController', function($scope) {
+            // Define an array of companies with their details
+            $scope.companies = [{
+                name: 'Company A',
+                workforce: 120,
+                location: 'New York'
+            }, {
+                name: 'Company B',
+                workforce: 50,
+                location: 'San Francisco'
+            }, {
+                name: 'Company C',
+                workforce: 75,
+                location: 'Los Angeles'
+            }, {
+                name: 'Company D',
+                workforce: 200,
+                location: 'Chicago'
+            }];
+        });
+    </script>
+
+</body>
+
+</html>

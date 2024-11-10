@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-app="employeeApp">
+
+    <div ng-controller="employeeCtrl">
+        <h2>Employee Details</h2>
+
+        <!-- Table to display Employee details -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Employee ID</th>
+                    <th>Pin Code</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ng-repeat will loop through each employee and display their data -->
+                <tr ng-repeat="employee in employees">
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.pinCode }}</td>
+                    <td>{{ employee.address }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // AngularJS application definition
+        var app = angular.module('employeeApp', []);
+
+        // Controller to manage the employee data
+        app.controller('employeeCtrl', function($scope) {
+            // Employee data array
+            $scope.employees = [{
+                name: 'John Doe',
+                id: 101,
+                pinCode: '110001',
+                address: '123, ABC Street, Delhi'
+            }, {
+                name: 'Jane Smith',
+                id: 102,
+                pinCode: '110002',
+                address: '456, XYZ Road, Mumbai'
+            }, {
+                name: 'Sam Brown',
+                id: 103,
+                pinCode: '110003',
+                address: '789, LMN Lane, Bangalore'
+            }];
+        });
+    </script>
+
+</body>
+
+</html>

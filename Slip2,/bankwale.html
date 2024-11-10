@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="bankApp">
+
+<head>
+    <title>Bank Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body ng-controller="BankController">
+
+    <h2>Bank Details</h2>
+
+    <!-- Table displaying bank details using ng-repeat -->
+    <table>
+        <thead>
+            <tr>
+                <th>Bank Name</th>
+                <th>MICR Code</th>
+                <th>IFSC Code</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="bank in banks">
+                <td>{{ bank.name }}</td>
+                <td>{{ bank.micr }}</td>
+                <td>{{ bank.ifsc }}</td>
+                <td>{{ bank.address }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // Define the AngularJS module and controller
+        var app = angular.module('bankApp', []);
+
+        app.controller('BankController', function($scope) {
+            // List of bank details to display
+            $scope.banks = [{
+                name: 'State Bank of India',
+                micr: '123456789',
+                ifsc: 'SBI0001234',
+                address: '123, Main Street, Mumbai'
+            }, {
+                name: 'HDFC Bank',
+                micr: '987654321',
+                ifsc: 'HDFC0005678',
+                address: '456, Central Avenue, Delhi'
+            }, {
+                name: 'ICICI Bank',
+                micr: '112233445',
+                ifsc: 'ICIC0009876',
+                address: '789, Corporate Park, Bangalore'
+            }];
+        });
+    </script>
+
+</body>
+
+</html>
